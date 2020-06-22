@@ -85,14 +85,13 @@ Create a file named `index.html` and add the following markup/code as the conten
 
      uport.requestDisclosure()
 
-     uport.onResponse('disclosureReq').then(res => {
+     uport.onResponse(reqID).then(res => {
        json = JSON.stringify(res.payload)
        console.log(json)
        document.querySelector('#msg').innerHTML = "Congratulations you are now `logged in`.  Here is your DID identifier:  " + json
-     })
-
-     uport.sendVerification({exp: Math.floor(new Date().getTime() / 1000) + 30 * 24 * 60 * 60,
+       uport.sendVerification({exp: Math.floor(new Date().getTime() / 1000) + 30 * 24 * 60 * 60,
                              claim: {'Example' : {'Last Seen' : `${new Date()}`}}
+       })      
      })
     </script>
   </body>
